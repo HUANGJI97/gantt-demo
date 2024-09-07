@@ -126,6 +126,26 @@
   position: relative;
   // box-sizing: border-box;
 }
+.gantt-table-body {
+  box-sizing: border-box;
+  .row {
+    height: var(--row-height);
+    box-sizing: border-box;
+    display: flex;
+    .column {
+      box-sizing: border-box;
+
+      width: var(--column-width);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    // 偶数行
+    &:nth-child(even) {
+      background-color: #f5f5f5;
+    }
+  }
+}
 .header {
   a {
     display: flex;

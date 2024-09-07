@@ -5,26 +5,25 @@ import { useEffect, useState } from "react";
 import { getTasks } from "./apis/tasks";
 import CustomTooltip from "./components/CustomTooltip";
 import GithubSvg from "./assets/github.svg";
-
-// const TaskListHeader: React.FC<{
-//   headerHeight: number;
-//   rowWidth: string;
-//   fontFamily: string;
-//   fontSize: string;
-// }> = (props) => (
-//   <div
-//     className="custom-task-list-header"
-//     style={{ "--height": `${props.headerHeight - 2}px` } as React.CSSProperties}
-//   >
-//     <div>名称</div>
-//     <div>开始时间</div>
-//     <div>结束时间</div>
-//   </div>
-// );
+import useCustomTable from "./components/CustomTable";
+import dayjs from "dayjs";
 
 function App() {
   // const [count, setCount] = useState(0)
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [TaskListHeader, TaskListTable] = useCustomTable([
+    { title: "名称", prop: "name" },
+    {
+      title: "开始时间",
+      prop: "start",
+      render: (val) => dayjs(val).format("YYYY-MM-DD"),
+    },
+    {
+      title: "结束时间",
+      prop: "end",
+      render: (val) => dayjs(val).format("YYYY-MM-DD"),
+    },
+  ]);
 
   async function fetchTask() {
     const result = await getTasks();
@@ -62,6 +61,8 @@ function App() {
           tasks={tasks}
           todayColor="#FBEBE4"
           TooltipContent={CustomTooltip}
+          TaskListHeader={TaskListHeader}
+          TaskListTable={TaskListTable}
           locale="zh"
           listCellWidth="155px"
           onExpanderClick={handleExpanderClick}
