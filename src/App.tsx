@@ -1,9 +1,10 @@
 import "./App.scss";
 import { Gantt, Task } from "gantt-task-react";
 import "gantt-task-react/dist/index.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getTasks } from "./apis/tasks";
 import CustomTooltip from "./components/CustomTooltip";
+import GithubSvg from "./assets/github.svg";
 
 // const TaskListHeader: React.FC<{
 //   headerHeight: number;
@@ -44,18 +45,25 @@ function App() {
   // const CustomTooltip =
 
   return (
-    <div>
+    <div className="container">
       {/* <div style={{ width: "300px" }}>
         {tasks[0] && (
           <CustomTooltip task={tasks[0]} fontFamily="" fontSize="" />
         )}
       </div> */}
+      <div className="header">
+        <a href="https://github.com/HUANGJI97/gantt-demo" target="_blank">
+          <img src={GithubSvg} />
+          <h1>Gantt Demo</h1>
+        </a>
+      </div>
       {tasks.length ? (
         <Gantt
           tasks={tasks}
           todayColor="#FBEBE4"
           TooltipContent={CustomTooltip}
           locale="zh"
+          listCellWidth="155px"
           onExpanderClick={handleExpanderClick}
         />
       ) : (
