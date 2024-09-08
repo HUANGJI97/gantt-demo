@@ -1,6 +1,6 @@
 import "./App.scss";
-import { Gantt, Task, ViewMode } from "gantt-task-react";
-import "gantt-task-react/dist/index.css";
+import { Gantt, Task, ViewMode } from "@lianfangti/gantt-task-react";
+import "@lianfangti/gantt-task-react/dist/index.css";
 import { useEffect, useMemo, useState } from "react";
 import { getTasks } from "./apis/tasks";
 import CustomTooltip from "./components/CustomTooltip";
