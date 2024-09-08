@@ -134,11 +134,21 @@
     display: flex;
     .column {
       box-sizing: border-box;
-
       width: var(--column-width);
       display: flex;
       align-items: center;
       justify-content: center;
+      .icon-expand {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 12px;
+        cursor: pointer;
+        transform: rotate(-90deg);
+        &.expanded {
+          transform: rotate(0deg);
+        }
+      }
     }
     // 偶数行
     &:nth-child(even) {
@@ -155,5 +165,41 @@
   img {
     width: 30px;
     height: 30px;
+  }
+}
+
+.gantt-calendar-column {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .date {
+    font-weight: bold;
+  }
+  .week {
+    color: gray;
+  }
+  // background-color: red;
+}
+.button-tabs {
+  display: flex;
+  border-radius: 16px;
+  overflow: hidden !important;
+  .item {
+    padding: 6px 24px;
+    background: #d5def2;
+    color: #4d85ff;
+    cursor: pointer;
+    &:last-child {
+      border-radius: 0 16px 16px 0;
+    }
+    transition: background-color 0.2s ease;
+    &:hover,
+    &.active {
+      background: #4d85ff;
+      color: white;
+    }
   }
 }
